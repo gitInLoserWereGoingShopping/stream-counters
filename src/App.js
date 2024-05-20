@@ -1,23 +1,35 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [okCounter, setOkCounter] = useState(0);
+  const [mumbleCounter, setMumbleCounter] = useState(0);
+
+  const pleaseIncreaseOkCounterByOneThankYou = () => {
+    const nextOkCounter = okCounter + 1;
+    setOkCounter(nextOkCounter);
+  };
+
+  const pleaseAddOneToTheMumbles = function() {
+    const nextMumbleCounter = mumbleCounter + 1;
+    setMumbleCounter(nextMumbleCounter);
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App-wrapper'>
+      <div className='btn-group'>
+        <button
+          className='btn-ok-counter'
+          onClick={pleaseIncreaseOkCounterByOneThankYou}>
+          {`OK Counter: ${okCounter}`}
+        </button>
+        <div className='line-break'></div>
+        <button
+          className='btn-mumber-counter'
+          onClick={pleaseAddOneToTheMumbles}>
+          {`Mumble Counter: ${mumbleCounter}`}
+        </button>
+      </div>
     </div>
   );
 }
